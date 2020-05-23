@@ -1,2 +1,3 @@
-# cs50web
-learning with cs50web
+# Project 1
+
+Web Programming with Python and JavaScript

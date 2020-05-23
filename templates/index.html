@@ -1,0 +1,46 @@
+{% if session["logged_in"] == True %}
+{% extends "layout.html" %}
+
+{% block title %}
+Books
+{% endblock %}
+
+{% block main %}
+
+<br><br>
+<div class="mx-auto" style="text-align: center; width: 300px;">
+    <form action="/" method="POST">
+        <div class="form-group ">
+        <input class="form-control" autocomplete="off" autofocus name="name" placeholder="Search book" type="text">
+        </div>
+        <div class="form-group ">
+        <button class="btn btn-primary" type="submit">Search book</button>
+        </div>
+    </form>
+    </div>
+<div>
+    <ul>
+        {% for book in books %}
+        <li>
+            <a href="{{ url_for('book', book=book[0])}}">
+                {{ book[0] }}    |    Title: {{ book[1] }}    |    Auther: {{ book[2] }}    |    Year: {{ book[3] }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+{% else %}
+<!DOCTYPE hrml>
+<html lang="eng">
+    <head>
+        <title>BOOKS</title>
+    </head>
+    <body style="background-image: url(static/bg.jpg);">
+<div style="text-align: center; margin-top: 22%; border: cyan; font-size: 90px; font-weight: bold;">
+<a style="margin-right: 100px;" href="{{ url_for('login')}}">Login</a>
+<a style="margin-left: 00px;" href="{{ url_for('register')}}">Register</a>
+</div>
+</body>
+</html>
+{% endif %}

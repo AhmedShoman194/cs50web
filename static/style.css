@@ -1,0 +1,14 @@
+.backgroundimage_index
+{
+    background: url(background.jpg) no-repeat center center fixed;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+}
+
+.center
+{
+    text-align: center;
+}
+

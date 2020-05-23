@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Book details
+{% endblock %}
+
+{% block main %}
+<br><br>
+<div class="container">
+    <div class="row">
+    <div class="col-9">
+    <p><h2 style="color: blue;">{{ books[0][1] }}</h2></p>
+    <p><span style="font-weight: bold;">ISBN: </span>{{ books[0][0] }}</p>
+    <p><span style="font-weight: bold;">Book Author: </span>{{ books[0][2] }}</p>
+    <p><span style="font-weight: bold;">Publish year: </span>{{ books[0][3] }}</p>
+    </div>
+    <div class="col-3">
+    <p><h3>Goodreads</h3></p>
+    <p><span style="font-weight: bold;">Goodreads votes: </span>{{ goodcount }}</p>
+    <p><span style="font-weight: bold;">Goodreads rating: </span>{{ goodrate }}</p> 
+    </div>
+    </div>
+</div>
+
+
+<br><br>
+<div class="container">
+    
+    <div class="row">
+        <div class="col-9">
+
+<h3 style="color: brown; background-color: cornsilk;">Reviews</h3>
+<br>
+    {% for j in range((rev|count / 4)|int) %}
+    
+        <div style="background-color: cornsilk;">
+        <p style="font-size: x-large; font-weight: bold;">{{ rev[j*4] }}</p>
+        <p><span style="font-weight: bold;">Rate: </span>{{ rev[j*4 + 1] }}</p>
+        <p><span style="font-weight: bold;">Review: </span>{{ rev[j*4 + 2] }}</p>
+        <p style="font-size: x-small;">{{ rev[j*4 + 3] }}</p>
+        
+    </div>
+    <br>
+    
+{% endfor %}
+</div>
+</div>
+</div>
+{% endblock %}
