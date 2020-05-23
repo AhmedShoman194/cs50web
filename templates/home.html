@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block main %}
+{% for j in range(item_category|count) %}
+<fieldset>
+<legend class="alert alert-dark p-3 ml-5"><h2>{{ item_category[j] }}</h2></legend>
+<div class="ml-5 row row-cols-1 row-cols-md-4">
+
+{% for i in range(item_name|count) %}
+{% if item_category[j] == ca[i] %}
+<form action="/home" method="POST">
+    <div class="col mb-5">
+<div class="card text-white border-dark bg-secondary mb-3" style="width: 18rem;">
+    <img src="static/{{ image[i] }}" class="card-img-top">
+    <div class="card-body">
+        <h5 class="card-title">{{ item_name[i] }}</h5>
+        <p class="card-text">{{ description[i] }}</p>
+        <p class="card-text">Price: {{ item_price[i] }}$</p>
+        <input type="hidden" name="code" value="{{ code[i] }}">
+        <input type="hidden" name="name" value="{{ item_name[i] }}">
+        <input type="hidden" name="price" value="{{ item_price[i] }}">
+        <input type="text" name="number" placeholder="Number of items">
+        <button type="submit" class="btn btn-primary">Buy</button>
+    </div>
+    
+</div>
+</div>
+</form>
+{% endif %}
+{% endfor %}
+</div>
+</fieldset>
+{% endfor %}
+{% endblock %}
