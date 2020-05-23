@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+<table class="table">
+    <thread class="thead-dark">
+    <tr>
+        <th scope="col">
+            Symbol
+        </th>
+        <th scope="col">
+            Number of shares
+        </th>
+        <th scope="col"> 
+            Price of transaction
+        </th>
+        <th scope="col">
+            Type of transaction
+        </th>
+        <th scope="col">
+            Time of transaction
+        </th>
+    </tr>
+    </thread>
+    <tbody>
+
+{% for j in range((table|count / 5)|int) %}
+    <tr>
+        {% for i in range(j*5, j*5 + 5) %}
+        <td>
+            {{table[i]}}
+        </td>
+        {% endfor %}
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+{% endblock %}

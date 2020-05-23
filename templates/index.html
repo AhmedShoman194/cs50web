@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Finance
+{% endblock %}
+
+{% block main %}
+<table class="table">
+    <thread class="thead-dark">
+    <tr>
+        <th scope="col">
+            Symbol
+        </th>
+        <th scope="col">
+            Number of shares
+        </th>
+        <th scope="col"> 
+            Price of a share
+        </th>
+        <th scope="col">
+            Total price
+        </th>
+    </tr>
+    </thread>
+    <tbody>
+
+{% for j in range((table|count / 4)|int) %}
+    <tr>
+        {% for i in range(j*4, j*4 + 4) %}
+        <td>
+            {{table[i]}}
+        </td>
+        {% endfor %}
+    </tr>
+{% endfor %}
+    </tbody>
+    <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    <tbody>
+    <tr>
+        <td></td>
+        <td></td>
+        <td style="font-size: larger;">Cash</td>
+        <td>{{cash}}</td>
+    </tr>
+    </tbody>
+    <tbody>
+    <tr>
+        <td></td>
+        <td></td>
+        <td style="font-size: larger;">Total</td>
+        <td>{{big_total}}</td>
+    </tr>
+    </tbody>
+</table>
+{% endblock %}
