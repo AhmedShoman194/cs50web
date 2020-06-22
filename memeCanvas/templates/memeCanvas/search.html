@@ -1,0 +1,57 @@
+{% extends "memeCanvas/base.html" %}
+
+{% block head %}
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'memeCanvas/css/style.css' %}">
+    <link rel="icon" href="{% static 'memeCanvas/images/icon.ico' %}">
+    <script src="{% static 'memeCanvas/javascript/script3.js' %}"></script>
+
+{% endblock %}
+
+{% block body %}
+    <br>
+    
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+
+                <form action="{% url 'search' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="text" placeholder="Search memes">
+                    <button type="submit">Search</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+
+                {% if l %}
+
+                    {% for i in l %}
+
+                        <input type="hidden" value="{{ i }}" data-id="{{ forloop.counter0|add:1 }}">
+                        
+                        {% if forloop.counter|divisibleby:"5" %}
+
+                            <div><canvas id="{{ forloop.counter0|add:2 }}" class="canv"></canvas></div>
+
+                        {% endif %}
+                
+                    {% endfor %}
+
+                    <input type="hidden" value="{{ n }}" id="num">
+
+                {% endif %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

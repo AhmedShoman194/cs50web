@@ -1,0 +1,30 @@
+{% extends "memeCanvas/base.html" %}
+
+{% block head %}
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'memeCanvas/css/style.css' %}">
+    <link rel="icon" href="{% static 'memeCanvas/images/icon.ico' %}">
+    <script src="{% static 'memeCanvas/javascript/script2.js' %}"></script>
+
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                {% for i in myMemes reversed %}
+                {% widthratio forloop.counter0 1 6 as count %}
+                <input type="hidden" value="{{ i.topText }}" data-id="{{ count }}">
+                <input type="hidden" value="{{ i.topTextSize }}" data-id="{{ count|add:1 }}">
+                <input type="hidden" value="{{ i.bottomText }}" data-id="{{ count|add:2 }}">
+                <input type="hidden" value="{{ i.bottomTextSize }}" data-id="{{ count|add:3 }}">
+                <div><canvas id="{{ count|add:4 }}" class="canv"></canvas></div>
+                <input type="hidden" value="{{ i.temp.url }}" data-id="{{ count|add:5 }}">
+                <br>
+                {% endfor %}
+                <input type="hidden" value="{{ n }}" id="num">
+            </div>
+        </div>
+    </div>
+{% endblock %}

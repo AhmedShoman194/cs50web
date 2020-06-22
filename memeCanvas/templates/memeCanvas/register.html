@@ -1,0 +1,40 @@
+{% extends "memeCanvas/base.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block body %}
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+    <div style="margin-left: 30%; margin-top: 7%;">
+    <form action="{% url 'register' %}" method="POST">
+        {% csrf_token %}
+        <div class="col-sm-6">
+        <div class="form-group">
+        <input class="form-control" placeholder="Username" name="username" type="text"/>
+        </div>
+        <div class="form-group">
+        <input class="form-control" placeholder="Email" name="email" type="email"/>
+        </div>
+        <div class="form-group">
+        <input class="form-control" placeholder="First name" name="firstname" type="text"/>
+        </div>
+        <div class="form-group">
+        <input class="form-control" placeholder="Last name" name="lastname" type="text"/>
+        </div>
+        <div class="form-group">
+        <input class="form-control" placeholder="Password" name="password" type="password"/>
+        </div>
+        <div class="form-group">
+        <input class="form-control" placeholder="Confirm password" name="confirm" type="password"/>
+        </div>
+        <br>
+        
+        <button type="submit" class="btn btn-primary btn-block" >Register</button>
+        
+    </div>
+    </form>
+    </div>
+{% endblock %}
